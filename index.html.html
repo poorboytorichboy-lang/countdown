@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f6fb;
+text-align:center;
+margin:0;
+}
+
+.header{
+background:#2f4a67;
+color:white;
+padding:15px;
+font-size:22px;
+}
+
+.container{
+margin-top:80px;
+}
+
+.title{
+font-size:28px;
+margin-bottom:30px;
+}
+
+.timer{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.box{
+background:white;
+padding:20px;
+border-radius:10px;
+width:80px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.number{
+font-size:28px;
+font-weight:bold;
+color:#ff6b3d;
+}
+
+.label{
+font-size:12px;
+color:#777;
+}
+
+.button{
+margin-top:40px;
+background:#ff6b3d;
+color:white;
+padding:15px 30px;
+border-radius:8px;
+display:inline-block;
+font-size:16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+Countdown Website
+</div>
+
+<div class="container">
+
+<div class="title">
+How many days until 1 April?
+</div>
+
+<div class="timer">
+
+<div class="box">
+<div class="number" id="days">19</div>
+<div class="label">Days</div>
+</div>
+
+<div class="box">
+<div class="number" id="hours">23</div>
+<div class="label">Hours</div>
+</div>
+
+<div class="box">
+<div class="number" id="minutes">59</div>
+<div class="label">Minutes</div>
+</div>
+
+<div class="box">
+<div class="number" id="seconds">59</div>
+<div class="label">Seconds</div>
+</div>
+
+</div>
+
+<div class="button">
+SEE COUNTDOWN
+</div>
+
+</div>
+
+<script>
+
+let targetDate = new Date("April 1, 2026 00:00:00").getTime();
+
+setInterval(function(){
+
+let now = new Date().getTime();
+
+let distance = targetDate - now;
+
+let days = Math.floor(distance / (1000*60*60*24));
+let hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+let minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+let seconds = Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
+
+},1000);
+
+</script>
+
+</body>
